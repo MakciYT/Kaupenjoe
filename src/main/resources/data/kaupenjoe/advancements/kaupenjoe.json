@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "kaupenjoe:amethyst"
+    },
+    "title": "Kaupenjoe",
+    "description": "The Power lies in the Amethyst",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "kaupenjoe:textures/block/amethyst_block.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "kaupenjoe:amethyst"
+          }
+        ]
+      }
+    }
+  }
+}

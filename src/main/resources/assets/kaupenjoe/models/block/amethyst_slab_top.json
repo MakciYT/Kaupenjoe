@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "kaupenjoe:block/amethyst_block",
+    "top": "kaupenjoe:block/amethyst_block",
+    "side": "kaupenjoe:block/amethyst_block"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "kaupenjoe:kjdim",
+  "ultrawarm": false,
+  "natural": false,
+  "coordinate_scale": 1,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "ambient_light": 3,
+  "piglin_safe": false,
+  "bed_works": true,
+  "respawn_anchor_works": false,
+  "has_raids": false,
+  "logical_height": 256,
+  "infiniburn": "minecraft:infiniburn_overworld",
+  "effects": "minecraft:overworld"
+}

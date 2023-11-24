@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "kaupenjoe:block/amethyst_slab"
+    },
+    "type=double": {
+      "model": "kaupenjoe:block/amethyst_block"
+    },
+    "type=top": {
+      "model": "kaupenjoe:block/amethyst_slab_top"
+    }
+  }
+}

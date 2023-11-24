@@ -1,0 +1,6 @@
+{
+  "parent": "kaupenjoe:item/kaupenbow",
+  "textures": {
+    "layer0": "kaupenjoe:item/kaupenbow_pulling_2"
+  }
+}

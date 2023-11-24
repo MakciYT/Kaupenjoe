@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="All rights reserved"
+[[mods]]
+modId="kaupenjoe"
+version="1.0"
+displayName="Kaupenjoe"
+displayURL="https://www.youtube.com/@MakciYT"
+logoFile="bobik.png"
+credits="Хочу поблагодарить... Сам ты писька!"
+authors="Makci"
+description='''
+'''
+[[dependencies.kaupenjoe]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.kaupenjoe]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"

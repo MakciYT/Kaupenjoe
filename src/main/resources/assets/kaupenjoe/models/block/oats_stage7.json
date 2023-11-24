@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "kaupenjoe:block/oats_stage7"
+  }
+}

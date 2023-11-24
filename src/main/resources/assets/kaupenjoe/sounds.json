@@ -1,0 +1,48 @@
+{
+  "small_explosion": {
+    "category": "blocks",
+    "subtitle": "kaupenjoe.small_explosion",
+    "sounds": [
+      "kaupenjoe:small_explosion"
+    ]
+  },
+  "damir.ambient": {
+    "category": "ambient",
+    "sounds": [
+      "kaupenjoe:damir/ambient/ambient1",
+      "kaupenjoe:damir/ambient/ambient2",
+      "kaupenjoe:damir/ambient/ambient3",
+      "kaupenjoe:damir/ambient/ambient4",
+      "kaupenjoe:damir/ambient/ambient5",
+      "kaupenjoe:damir/ambient/ambient6",
+      "kaupenjoe:damir/ambient/ambient7",
+      "kaupenjoe:damir/ambient/ambient8"
+    ]
+  },
+  "damir.death": {
+    "category": "neutral",
+    "sounds": [
+      "kaupenjoe:damir/death"
+    ]
+  },
+  "damir.hurt": {
+    "category": "neutral",
+    "sounds": [
+      "kaupenjoe:damir/hurt"
+    ]
+  },
+  "damir.fart": {
+    "category": "neutral",
+    "sounds": [
+      "kaupenjoe:damir/fart"
+    ]
+  },
+  "pimple_potion": {
+    "sounds": [
+      {
+        "name": "kaupenjoe:pimple_potion",
+        "stream": true
+      }
+    ]
+  }
+}
