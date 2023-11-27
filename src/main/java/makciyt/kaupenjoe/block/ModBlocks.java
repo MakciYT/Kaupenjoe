@@ -19,6 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS

@@ -2,9 +2,7 @@ package makciyt.kaupenjoe.item;
 
 import makciyt.kaupenjoe.Kaupenjoe;
 import makciyt.kaupenjoe.block.ModBlocks;
-import makciyt.kaupenjoe.block.ModWoodTypes;
 import makciyt.kaupenjoe.entity.ModEntityTypes;
-import makciyt.kaupenjoe.entity.custom.ModBoatEntity;
 import makciyt.kaupenjoe.fluid.ModFluids;
 import makciyt.kaupenjoe.item.custom.*;
 import makciyt.kaupenjoe.util.ModSoundEvents;
@@ -16,6 +14,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@SuppressWarnings("unused")
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Kaupenjoe.MOD_ID);
     public static final RegistryObject<Item> AMETHYST = ITEMS.register("amethyst",
