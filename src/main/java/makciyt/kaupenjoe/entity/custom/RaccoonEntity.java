@@ -1,5 +1,7 @@
 package makciyt.kaupenjoe.entity.custom;
 
+import makciyt.kaupenjoe.entity.ModEntityTypes;
+import makciyt.kaupenjoe.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
@@ -51,6 +53,7 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
         this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(1, new SitGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -61,7 +64,12 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
     @Nullable
     @Override
     public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
-        return null;
+        return ModEntityTypes.RACCOON.get().create(world);
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.getItem() == ModItems.OATS.get();
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -117,6 +125,10 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
         Item item = itemstack.getItem();
 
         Item itemForTaming = Items.APPLE;
+
+        if(isBreedingItem(itemstack)) {
+            return super.getEntityInteractionResult(player, hand);
+        }
 
         if (item == itemForTaming && !isTamed()) {
             if (this.world.isRemote) {
