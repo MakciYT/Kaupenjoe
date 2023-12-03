@@ -17,6 +17,8 @@ public class ModEntityGeneration {
                 40, 2, 4);
         addEntityToAllBiomesExceptThese(event, ModEntityTypes.PIGEON.get(),
                 50, 4, 12, Biomes.PLAINS, Biomes.BEACH);
+        addEntityToAllBiomesExceptThese(event, ModEntityTypes.RACCOON.get(),
+                40, 2, 4, Biomes.PLAINS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
