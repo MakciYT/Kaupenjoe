@@ -1,10 +1,13 @@
 package makciyt.kaupenjoe.entity.custom;
 
 import makciyt.kaupenjoe.entity.ModEntityTypes;
+import makciyt.kaupenjoe.entity.variant.RaccoonVariant;
 import makciyt.kaupenjoe.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
@@ -20,6 +23,8 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -37,6 +42,9 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
     private AnimationFactory factory = new AnimationFactory(this);
     private static final DataParameter<Boolean> SITTING =
             EntityDataManager.createKey(RaccoonEntity.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> DATA_ID_TYPE_VARIANT =
+            EntityDataManager.createKey(RaccoonEntity.class, DataSerializers.VARINT);
+
     public RaccoonEntity(EntityType<? extends TameableEntity> type, World worldIn) {
         super(type, worldIn);
     }
@@ -64,7 +72,10 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
     @Nullable
     @Override
     public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
-        return ModEntityTypes.RACCOON.get().create(world);
+        RaccoonEntity baby = ModEntityTypes.RACCOON.get().create(world);
+        RaccoonVariant variant = Util.getRandomObject(RaccoonVariant.values(), this.rand);
+        baby.setVariant(variant);
+        return baby;
     }
 
     @Override
@@ -168,18 +179,21 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
     public void readAdditional(CompoundNBT tag) {
         super.readAdditional(tag);
         setToSit(tag.getBoolean("isSitting"));
+        this.dataManager.set(DATA_ID_TYPE_VARIANT, tag.getInt("Variant"));
     }
 
     @Override
     public void writeAdditional(CompoundNBT tag) {
         super.writeAdditional(tag);
         tag.putBoolean("isSitting", this.isSitting());
+        tag.putInt("Variant", this.getTypeVariant());
     }
 
     @Override
     protected void registerData() {
         super.registerData();
         this.dataManager.register(SITTING, false);
+        this.dataManager.register(DATA_ID_TYPE_VARIANT, 0);
     }
 
     public void setToSit(boolean sitting) {
@@ -213,5 +227,25 @@ public class RaccoonEntity extends TameableEntity implements IAnimatable {
             getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(2D);
             getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue((double)0.25f);
         }
+    }
+
+    /* VARIANTS */
+    @Override
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
+        RaccoonVariant variant = Util.getRandomObject(RaccoonVariant.values(), this.rand);
+        setVariant(variant);
+        return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    public RaccoonVariant getVariant() {
+        return RaccoonVariant.byId(this.getTypeVariant() & 255);
+    }
+
+    private int getTypeVariant() {
+        return this.dataManager.get(DATA_ID_TYPE_VARIANT);
+    }
+
+    private void setVariant(RaccoonVariant variant) {
+        this.dataManager.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
     }
 }
