@@ -9,6 +9,7 @@ import makciyt.kaupenjoe.entity.ModEntityTypes;
 import makciyt.kaupenjoe.entity.render.*;
 import makciyt.kaupenjoe.fluid.ModFluids;
 import makciyt.kaupenjoe.item.ModItems;
+import makciyt.kaupenjoe.networking.ModMessages;
 import makciyt.kaupenjoe.paintings.ModPaintings;
 import makciyt.kaupenjoe.screen.LightningChannelerScreen;
 import makciyt.kaupenjoe.tileentity.ModTileEntities;
@@ -37,14 +38,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
 @Mod(Kaupenjoe.MOD_ID)
 public class Kaupenjoe {
     public static final String MOD_ID = "kaupenjoe";
-    private static final Logger LOGGER = LogManager.getLogger();
     public Kaupenjoe() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(eventBus);
@@ -65,6 +63,7 @@ public class Kaupenjoe {
     }
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ModMessages.register();
             AxeItem.BLOCK_STRIPPING_MAP = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.BLOCK_STRIPPING_MAP)
                     .put(ModBlocks.REDWOOD_LOG.get(), ModBlocks.STRIPPED_REDWOOD_LOG.get())
                     .put(ModBlocks.REDWOOD_WOOD.get(), ModBlocks.STRIPPED_REDWOOD_WOOD.get()).build();

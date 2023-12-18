@@ -59,5 +59,9 @@
   "command.kaupenjoe.sethome_feedback": "Установлен дом на координатах ",
   "command.kaupenjoe.returnhome_success": "Игрок вернулся домой!",
   "command.kaupenjoe.returnhome_failed": "Координаты дома не были установлены!",
-  "screen.kaupenjoe.lightning_channeler": "Направитель молний"
+  "key.category.kaupenjoe.tutorial": "Kaupenjoe",
+  "key.kaupenjoe.drink_water": "Выпить воды",
+  "screen.kaupenjoe.lightning_channeler": "Направитель молний",
+  "message.kaupenjoe.drink_water": "Выпивание воды...",
+  "message.kaupenjoe.no_water": "Нет воды поблизости!"
 }

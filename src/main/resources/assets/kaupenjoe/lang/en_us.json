@@ -59,5 +59,9 @@
   "command.kaupenjoe.sethome_feedback": "Set Home at ",
   "command.kaupenjoe.returnhome_success": "Player returned Home!",
   "command.kaupenjoe.returnhome_failed": "No Home Position has been set!",
-  "screen.kaupenjoe.lightning_channeler": "Lightning Channeler"
+  "key.category.kaupenjoe.tutorial": "Kaupenjoe",
+  "key.kaupenjoe.drink_water": "Drink Water",
+  "screen.kaupenjoe.lightning_channeler": "Lightning Channeler",
+  "message.kaupenjoe.drink_water": "Drinking Water",
+  "message.kaupenjoe.no_water": "No water nearby!"
 }
